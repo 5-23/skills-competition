@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: sans-serif;   
+}
+
+body {
+    background-color: #ffffff;
+}
+header {
+    position: fixed;
+    background-color: #fff;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    height: 60px;
+    padding: 0 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > nav {
+        display: flex;
+        gap: 8px;
+        > a {
+            color: #000;
+            text-decoration: none;
+            transition: all .5s;
+            &:hover {
+                color: #90AD5E;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+main {
+    display: flex;
+    flex-direction: column;
+    > article {
+        margin: 100px 10vw;
+    }
+}
+
+#visual {
+    margin: 0;
+    display: flex;
+    overflow: scroll;
+    width: 100vw;
+    scroll-snap-type: x mandatory;
+    > div {
+        scroll-snap-align: center;
+        transition: all .5s;
+        min-width: 100vw;
+        height: 300px;
+        background-position: 50%;
+        color: #fff;
+        padding: 25px;
+        font-size: 20px;
+        background-size: 100%;
+        &:nth-child(1) {
+            background-image: linear-gradient(#0000007f, #0000007f), url("./imgs/head/1.jpg");
+        }
+
+        &:nth-child(2) {
+            background-image: linear-gradient(#0000007f, #0000007f), url("./imgs/head/2.jpg");
+        }
+        &:nth-child(3) {
+            background-image: linear-gradient(#0000007f, #0000007f), url("./imgs/head/3.jpg");
+        }
+        &:nth-child(4) {
+            background-image: linear-gradient(#0000007f, #0000007f),  url("./imgs/head/4.jpg");
+        }
+    }
+}
+
+
+#head {
+    /* display: ; */
+    > img {
+        background-color: #90ad5e6e;
+        width: 80px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    > div {
+        > h1 {
+            font-size: 40px;
+            font-weight: 600;
+        }
+    
+        > h2 {
+            margin-top: 4px;
+            font-size: 18px;
+            color: #999;
+            font-weight: 300;
+        }
+    }
+}
+
+#info {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    > section {
+        flex-grow: 1;
+        background-color: #90AD5E;
+        color: #fff;
+        box-shadow: 0 8px 0 #7B8F59;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        width: 100%;
+        > h1 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        > div {
+            margin-top: 4px;
+            display: flex;
+            flex-direction: column;
+            color: #ddd;
+            font-size: 16px;
+            > div {
+                display: flex;
+                gap: 40px;
+            }
+        }
+    }
+}
+
+#league {
+    margin-bottom: 0;
+    > #type {
+        > label {
+            > span {
+                background-color: #90AD5E;
+                box-shadow: 0 8px 0 #7B8F59;
+                padding: 10px 20px;
+                border-radius: 4px;
+                filter: brightness(0.5);
+                color: #fff;
+            }
+            > input {
+                display: none;
+            }
+            > input:checked ~ span {
+                filter: brightness(1);
+            }
+        }
+    }
+}
+
+#rank {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    > section {
+        overflow: hidden;
+        border-radius: 10px;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        > h1 {
+            padding: 10px;
+            background-color: #90AD5E;
+        }
+        > p {
+            padding: 10px;
+            outline: #90AD5E solid 1px;
+            background-color: #7B8F59;
+        }
+    }
+}
+
+#gs {
+    > section {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        > p {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #90AD5E;
+            color: #fff;
+            box-shadow: 0 8px 0 #7B8F59;
+            transition: all .5s;
+            cursor: pointer;
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 0 #7B8F59;
+            }
+        }
+    }
+}
+
+#modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    transition: all .5s;
+    transform: translateX(-50%) translateY(100vh);
+}
+
+#modal[open] {
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 2;
+}
+#modal-bg {
+    transition: all .5s;
+    opacity: 0.0;
+}
+#modal[open] ~ #modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+#gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > section {
+        scroll-snap-type: x mandatory;
+        overflow: scroll;
+        max-width: 400px;
+        display: flex;
+        align-items: center;
+        > img {
+            scroll-snap-align: center;
+            height: fit-content;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            border: solid 1px #999
+        }
+
+        &#btns {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            > input {
+                padding: 10px 20px;
+                outline: 0;
+                border: 0;
+                border-radius: 8px;
+                background-color: #90AD5E;
+                color: #fff;
+                margin-top: 20px;
+            }
+        }
+    }
+
+    > h1 {
+        font-size: 40px;
+    }
+}
+
+#goods {
+    
+    > section {
+        margin-top: 10px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        > div {
+            background-color: #fff;
+            border: solid 1px #999;
+            width: fit-content;
+            padding: 20px;
+            border-radius: 8px;
+            > h1 {
+                font-size: 20px;
+            }
+            > h2 {
+                font-size: 16px;
+                color: #999;
+            }
+            > img {
+                border-radius: 5px;
+                width: 200px;
+            }
+        }
+    }
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <img src="./imgs/logo.svg">
+        <nav>
+            <a href="#">information</a>
+            <a href="#">statistics</a>
+            <a href="#">reservation</a>
+            <a href="#">goods</a>
+        </nav>
+    </header>
+    <div style="margin-top: 60px;"></div>
+
+    <div id="modal">아직 게임이 없습니다</div>
+    <div id="modal-bg" onclick="modalClose()"></div>
+
+    <main>
+        <article id="visual">
+            <div>
+                <h1>No limits amazing skills baseball park!</h1>
+            </div>
+
+            <div>
+                <h1>킬스 베이스볼 파크에 오신것을 환영합니다.</h1>
+            </div>
+
+            <div>
+                <h1>New Champion, New Challenge, Skills Baseball Park</h1>
+            </div>
+
+            <div>
+                <h1>스킬스베이스볼 파크를 응원해주시는 모든 분께 감사드립니다.</h1>
+            </div>
+        </article>
+        <article id="head">
+            <img src="./imgs/player.png">
+            <div>
+                <h1>skills baseball park</h1>
+                <h2>
+                    Skills baseball park는 시민들의 복리증진을 위하여 설치되었으며, 시민들의 건강 및 복지향상과 시민들에게 편리한 시설물 이용을 위한 야구장입니다. <br/>
+                    <br/>
+                    야구를 사랑하며 즐기는 생활체육인들이 모이는 곳<br/>
+                    다양한 즐거움과 감동을 선사하는 곳<br/>
+                    <br/>
+                    Skills baseball park<br/>
+                </h2>
+            </div>
+        </article>
+
+        <article id="info">
+            <section>
+                <h1>지원형황</h1>
+                
+                <div>
+                    <div>
+                        <b>구장</b> <p>야구장</p>
+                    </div>
+
+                    <div>
+                        <b>조명</b> <p>조명타워 6기, 조명등</p>
+                    </div>
+
+                    <div>
+                        <b>타워폴</b> <p>24본</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <section>
+                <h1>전용사용료</h1>
+                <div>
+
+                    <div>
+                        <b>이용시간</b> <p>4시간</p>
+                    </div>
+
+                    <div>
+                        <b>이용요금</b> <p>주간(평일: 40,000원, 주말 및 공휴일: 60,000원), 야간(평일: 70,000원, 주말 및 공휴일: 90,000원)</p>
+                    </div>
+
+                </div>
+            </section>
+        </article>
+
+
+        <article id="gs">
+            <h1>게임 일정</h1>
+            <section>
+                <p onclick="modalOpen()">2024-04-20</p>
+                <p onclick="modalOpen()">2024-04-23</p>
+                <p onclick="modalOpen()">2024-04-28</p>
+            </section>
+        </article>
+
+
+        <article id="league">
+            <section id="type">
+                <label>
+                    <input type="radio" name="league" value="night" checked/>
+                    <span>나이트리그</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="league" value="week-end"/>
+                    <span>주말리그</span>
+                </label>
+                
+                <label>
+                    <input type="radio" name="league" value="dawn"/>
+                    <span>새벽리그</span>
+                </label>
+            </section>
+        </article>
+        <article id="rank">
+            <section>
+                <h1>투수</h1>
+                <p>?</p>
+                <p>?</p>
+                <p>?</p>
+                <p>?</p>
+
+            </section>
+
+
+            <section>
+                <h1>타자</h1>
+                <p>?</p>
+                <p>?</p>
+                <p>?</p>
+                <p>?</p>
+
+            </section>
+        </article>
+
+        <article id="gallery">
+            <h1>하이라이트</h1>
+            <section id="gallery-imgs">
+                <img src="imgs/gallery/1.jpg" alt="">
+
+                <img src="imgs/gallery/2.jpg" alt="">
+
+                <img src="imgs/gallery/3.jpg" alt="">
+            </section>
+            <section id="btns">
+                <input type="button" value="<-" onclick="before('gallery-imgs')">
+                <input type="button" value="->" onclick="after('gallery-imgs')">
+            </section>
+        </article>
+
+        <article id="goods">
+            <h1>상품</h1>
+            <section>
+                <div>
+                    <img src="imgs/goods/1.jpg" alt="">
+                    <h1>글러브</h1>
+                    <h2>10,000₩</h2>
+                </div>
+
+                <div>
+                    <img src="imgs/goods/1.jpg" alt="">
+                    <h1>글러브</h1>
+                    <h2>10,000₩</h2>
+                </div>
+
+                <div>
+                    <img src="imgs/goods/1.jpg" alt="">
+                    <h1>글러브</h1>
+                    <h2>10,000₩</h2>
+                </div>
+            </section>
+        </article>
+
+    </main>
+</body>
+</html>
+
+<script>
+    let modal = document.getElementById("modal");
+    const modalClose = () => {
+        modal.removeAttribute("open")
+    }
+    const modalOpen = () => {
+        modal.setAttribute("open", "")
+    }
+
+    const after = e => {
+        let element = document.getElementById(e)
+        let w = window.innerWidth;
+        if (element.id == "gallery-imgs") {
+            if (w >= 400) {
+                w = 400
+            }
+        }
+        if (element.scrollLeft >= w*(element.children.length-1)){
+            element.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            })
+        }else {
+            element.scrollTo({
+                top: 0,
+                left: element.scrollLeft + w,
+                behavior: "smooth",
+            })
+        }
+    }
+
+    const before = e => {
+        let element = document.getElementById(e)
+        let w = window.innerWidth;
+        if (element.id == "gallery-imgs") {
+            if (w >= 400) {
+                w = 400
+            }
+        }
+        if (element.scrollLeft <= 0){
+            element.scrollTo({
+                top: 0,
+                left: w*element.children.length,
+                behavior: "smooth",
+            })
+        }else {
+            element.scrollTo({
+                top: 0,
+                left: element.scrollLeft - w,
+                behavior: "smooth",
+            })
+        }
+    }
+
+    const loop = () => {
+        after("visual")
+        setTimeout(loop, 3000)    
+    }
+    loop()
+</script>
